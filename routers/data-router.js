@@ -1,4 +1,4 @@
-const {getData} = require('./repository');
+const {getData} = require('../repository');
 
 const express = require('express')
 const router = express.Router()
@@ -9,7 +9,7 @@ router.use((req, res, next) => {
 })
 
 router.get('/', async (req, res) => {
-    let arrData = await getData()
+    let arrData = await getData('data')
     let totalCountData = arrData.length
     let page = 1
     let pageCount = 5
