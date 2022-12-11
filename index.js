@@ -1,7 +1,8 @@
 const express = require('express')
-const data = require('./data-router')
 const cors = require('cors')
 const bodyParser = require('body-parser')
+
+const dataRouter = require('./data-router')
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -15,7 +16,11 @@ app.get('/', (req, res) => {
     res.send('Hello, my <a href="https://traigel.github.io/Portfolio">portfolio</a> ');
 });
 
-app.use('/data', data)
+app.use('/documents', (req, res) => {
+    res.send('This endpoint is under development');
+})
+
+app.use('/data', dataRouter)
 
 app.use((req, res) => {
     res.send(404);
